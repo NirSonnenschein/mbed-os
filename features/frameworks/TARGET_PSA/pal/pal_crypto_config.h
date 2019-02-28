@@ -404,4 +404,4 @@
 
 #include "pal_crypto_config_check.h"
 
-#endif
+#endif /* _PAL_CRYPTO_CONFIG_H_ */
