@@ -19,7 +19,6 @@
 #define _VAL_INITIAL_ATTESTATION_H_
 
 #include "val.h"
-#include "psa_initial_attestation_api.h"
 
 #define MAX_CHALLENGE_SIZE      PSA_INITIAL_ATTEST_CHALLENGE_SIZE_64
 
