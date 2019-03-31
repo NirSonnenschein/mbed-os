@@ -24,10 +24,9 @@
 #include <limits.h>
 #include <stdarg.h>
 
-#ifndef PSA_PROTECTED_STORAGE_IMPLEMENTED
-#define PSA_INTERNAL_TRUSTED_STORAGE_IMPLEMENTED 1 /* Use ITS by default */
-#define ITS_TEST 1
-#endif
+#define PSA_PROTECTED_STORAGE_IMPLEMENTED 1 /* test PS */
+#define PSA_INTERNAL_TRUSTED_STORAGE_IMPLEMENTED 1 /* test ITS */
+
 
 #include "pal_crypto_config.h"
 #include "internal_trusted_storage.h"

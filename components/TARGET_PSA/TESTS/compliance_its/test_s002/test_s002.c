@@ -18,11 +18,8 @@
 #include "val_interfaces.h"
 #include "val_target.h"
 #include "test_s002.h"
-#ifdef ITS_TEST
 #include "test_its_data.h"
-#elif PS_TEST
-#include "test_ps_data.h"
-#endif
+
 
 #define UID_WRITE_ONCE_1 UID_BASE_VALUE + 1
 #define UID_WRITE_ONCE_2 UID_BASE_VALUE + 2

@@ -18,6 +18,8 @@
 #include "val_interfaces.h"
 #include "val_target.h"
 #include "test_p012.h"
+
+#define PSA_PS_SUPPORT_SET_EXTENDED 1
 #include "test_ps_data.h"
 
 #define TEST_BUFF_SIZE 16

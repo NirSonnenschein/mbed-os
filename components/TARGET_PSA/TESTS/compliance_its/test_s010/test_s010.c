@@ -18,11 +18,7 @@
 #include "val_interfaces.h"
 #include "val_target.h"
 #include "test_s010.h"
-#ifdef ITS_TEST
 #include "test_its_data.h"
-#elif PS_TEST
-#include "test_ps_data.h"
-#endif
 
 #define TEST_BUFF_SIZE 1
 
