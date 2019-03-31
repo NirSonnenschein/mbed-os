@@ -75,13 +75,14 @@ static void psa_attestation_inject_key_for_test(void)
 
 
 
-static void reset_storage_for_compliance_test()
+static void reset_storage_for_ITS_compliance_test()
 {
-#ifdef ITS_TEST
     mbed_psa_reboot_and_request_new_security_state(PSA_LIFECYCLE_ASSEMBLY_AND_TEST);
-#elif PS_TEST
+}
+
+static void reset_storage_for_PS_compliance_test()
+{
     psa_ps_reset();
-#endif
 }
 
 #if !defined(MAX)
@@ -116,7 +117,11 @@ void pal_mbed_os_compliance_test_initialize(void)
     {
         inject_entropy();
     }
-    else if (COMPLIANCE_TEST_STORAGE == type_g)
+    else if (COMPLIANCE_TEST_PS_STORAGE == type_g)
+    {
+        reset_storage_for_compliance_test();
+    }
+    else if (COMPLIANCE_TEST_PS_STORAGE == type_g)
     {
         reset_storage_for_compliance_test();
     }
@@ -131,7 +136,14 @@ void pal_mbed_os_compliance_test_initialize(void)
 
 void pal_mbed_os_compliance_test_destroy(void)
 {
-    reset_storage_for_compliance_test();
+    if (COMPLIANCE_TEST_PS_STORAGE == type_g)
+    {
+        reset_storage_for_compliance_test();
+    }
+    else if (COMPLIANCE_TEST_PS_STORAGE == type_g)
+    {
+        reset_storage_for_compliance_test();
+    }
 }
 
 int test_start(test_entry_f test_f, compliance_test_type type)
