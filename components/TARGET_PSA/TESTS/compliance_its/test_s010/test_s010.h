@@ -17,13 +17,9 @@
 #ifndef _TEST_S010_CLIENT_TESTS_H_
 #define _TEST_S010_CLIENT_TESTS_H_
 
-#ifdef ITS_TEST
 #define VAL_STORAGE_BASE VAL_INTERNAL_TRUSTED_STORAGE_BASE
 #define test_entry CONCAT(test_entry_, s010)
-#elif PS_TEST
-#define VAL_STORAGE_BASE VAL_PROTECTED_STORAGE_BASE
-#define test_entry CONCAT(test_entry_, p010)
-#endif
+
 #define val CONCAT(val,test_entry)
 #define psa CONCAT(psa,test_entry)
 
