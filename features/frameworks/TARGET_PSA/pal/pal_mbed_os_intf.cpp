@@ -19,9 +19,7 @@
 
 extern val_api_t val_api;
 extern psa_api_t psa_api;
-#ifdef PS_TEST
 extern "C" psa_status_t psa_ps_reset();
-#endif
 
 test_entry_f test_g = NULL;
 compliance_test_type type_g = COMPLIANCE_TEST_UNDEFINED;
@@ -117,13 +115,13 @@ void pal_mbed_os_compliance_test_initialize(void)
     {
         inject_entropy();
     }
-    else if (COMPLIANCE_TEST_PS_STORAGE == type_g)
+    else if (COMPLIANCE_TEST_ITS_STORAGE == type_g)
     {
-        reset_storage_for_compliance_test();
+        reset_storage_for_ITS_compliance_test();
     }
     else if (COMPLIANCE_TEST_PS_STORAGE == type_g)
     {
-        reset_storage_for_compliance_test();
+        reset_storage_for_PS_compliance_test();
     }
     else if (COMPLIANCE_TEST_ATTESTATION == type_g)
     {
@@ -136,13 +134,15 @@ void pal_mbed_os_compliance_test_initialize(void)
 
 void pal_mbed_os_compliance_test_destroy(void)
 {
-    if (COMPLIANCE_TEST_PS_STORAGE == type_g)
+    
+    
+    if (COMPLIANCE_TEST_PS_STORAGE == type_g) // reset PS only on PS tests
     {
-        reset_storage_for_compliance_test();
+        reset_storage_for_PS_compliance_test();
     }
-    else if (COMPLIANCE_TEST_PS_STORAGE == type_g)
+    else 
     {
-        reset_storage_for_compliance_test();
+        reset_storage_for_ITS_compliance_test(); // reset ITS on other tests 
     }
 }
 
